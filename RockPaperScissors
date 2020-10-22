@@ -1,0 +1,104 @@
+import java.util.Scanner;
+
+class RockPaper {
+    static String ans="y";
+    static int rock=1, paper=2, scissors=3;
+    static int humanChoice=0;
+    static int computerChoice=0;
+    static int wins=0, losses=0, draws=0;
+    static Scanner sc = new Scanner(System.in);
+    public static void main (String[] args) {
+         //1. declare variables
+        
+        //... other variables go here
+        System.out.println("Good luck, human...");
+        while (ans.equals("y")){
+        PersonChoice();
+        ComputerChoice();
+        PrintChoices();
+        Winner();
+        //2. get user input
+     }
+      System.out.println("Ok! Goodbye!");
+      System.out.println("Wins: " + wins);
+      System.out.println("Draws: " + draws);
+      System.out.println("Losses: "+ losses);
+    }
+    
+   public static void PersonChoice (){
+     System.out.println("What do you throw? [1] Rock, [2] Paper, [3] Scissors");
+     humanChoice=sc.nextInt();
+    }
+   public static void ComputerChoice(){
+       computerChoice=(int)(Math.random()*3+1);
+    }
+   public static void PrintChoices(){
+       if (humanChoice==rock){
+           System.out.println("You threw rock!");
+        }
+        else if (humanChoice==paper){
+           System.out.println("You threw paper!");
+        }
+        else if (humanChoice==scissors){
+           System.out.println("You threw scissors!");  
+        }
+        
+       if (computerChoice==rock){
+           System.out.print("I threw rock!");
+        } else if (computerChoice==paper){
+           System.out.print("I threw paper!"); 
+        }
+        else if (computerChoice==scissors){
+          System.out.print("I threw scissors!");  
+        }
+    }
+   public static void Winner(){
+       if (humanChoice==rock&&computerChoice==scissors){
+           System.out.println("You beat me! I demand a rematch!");
+           System.out.println("Play again? [Y, N]");
+           ans=sc.next();
+           wins++;
+        }else if (humanChoice==rock&&computerChoice==rock){
+           System.out.println("A draw! Let's play again!"); 
+           System.out.println("Play again? [Y, N]");
+           ans=sc.next();
+           draws++;
+        } else if (humanChoice==rock&&computerChoice==paper){
+            System.out.println("I win! You are no match for me!");
+            System.out.println("Play again? [Y, N]");
+            ans=sc.next();
+            losses++;
+        }
+       else if (humanChoice==paper&&computerChoice==rock){
+            System.out.println("You beat me! I demand a rematch!");
+            System.out.println("Play again? [Y, N]");
+            ans=sc.next();
+            wins++;
+        }else if (humanChoice==paper&&computerChoice==paper){
+            System.out.println("A draw! Let's play again!");
+            System.out.println("Play again? [Y, N]");
+            ans=sc.next();
+            draws++;
+        }else if (humanChoice==paper&&computerChoice==scissors){
+            System.out.println("I win! You are no match for me!");
+            System.out.println("Play again? [Y, N]");
+            ans=sc.next();
+            losses++;
+        }else if (humanChoice==scissors&&computerChoice==paper){
+            System.out.println("You beat me! I demand a rematch!");
+            System.out.println("Play again? [Y, N]");
+            ans=sc.next();
+            wins++;
+        }else if (humanChoice==scissors&&computerChoice==scissors){
+            System.out.println("A draw! Let's play again!");
+            System.out.println("Play again? [Y, N]");
+            ans=sc.next();
+            draws++;
+        }else if (humanChoice==scissors&&computerChoice==rock){
+            System.out.println("I win! You are no match for me!");
+            System.out.println("Play again? [Y, N]");
+            ans=sc.next();
+            losses++;
+        }
+    }
+}
